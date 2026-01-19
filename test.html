@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation Post-Bac - Informatique & Électronique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <style>
+        /* Variables et styles généraux */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Sections générales */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cartes de formations */
+        .formations-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .formation-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .formation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .formation-header {
+            padding: 1.5rem;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .formation-level {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background-color: var(--secondary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-domain {
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .formation-body {
+            padding: 1.5rem;
+        }
+
+        .formation-desc {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .formation-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .detail-item i {
+            color: var(--secondary);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .formation-link {
+            display: inline-block;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .formation-link:hover {
+            color: var(--primary);
+        }
+
+        .formation-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .formation-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Comparateur */
+        .comparator {
+            background-color: var(--light);
+        }
+
+        .comparator-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .comparator-options {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .comparator-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: white;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .comparator-btn.active, .comparator-btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .comparator-content {
+            display: none;
+        }
+
+        .comparator-content.active {
+            display: block;
+        }
+
+        .comparator-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .comparator-table th, .comparator-table td {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparator-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparator-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparator-table tr:hover {
+            background-color: #f5f9ff;
+        }
+
+        .comparator-table .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            font-weight: 600;
+        }
+
+        /* Statistiques */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Carrousel d'avis */
+        .testimonials {
+            background-color: var(--light);
+            padding: 4rem 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+            padding: 30px 10px 50px;
+        }
+
+        .swiper-slide {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+            min-height: 120px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary);
+        }
+
+        .author-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--secondary);
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--secondary);
+        }
+
+        /* Lycées Parisiens */
+        .lycees-section {
+            background-color: white;
+        }
+
+        .lycees-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .lycee-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .lycee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .lycee-header {
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+
+        .lycee-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .lycee-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .lycee-body {
+            padding: 1.5rem;
+        }
+
+        .lycee-address {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+
+        .lycee-address i {
+            color: var(--accent);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .lycee-formations {
+            margin-bottom: 1.5rem;
+        }
+
+        .lycee-formations h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .formation-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lycee-link {
+            display: inline-block;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .lycee-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Carte interactive */
+        .map-section {
+            background-color: var(--light);
+        }
+
+        .map-container {
+            position: relative;
+            height: 500px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 300px;
+            z-index: 1000;
+        }
+
+        .map-overlay h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .map-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .legend-color.info {
+            background-color: var(--secondary);
+        }
+
+        .legend-color.elec {
+            background-color: var(--success);
+        }
+
+        /* FAQ */
+        .faq-section {
+            background-color: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: #e9ecef;
+        }
+
+        .faq-question h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-top: 0.2rem;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo i {
+            color: var(--secondary);
+        }
+
+        .footer-about p {
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h3, .footer-social h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
+            
+            .lycees-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .map-overlay {
+                position: relative;
+                top: 0;
+                left: 0;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .formation-card, .lycee-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .comparator-table th, .comparator-table td {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .swiper-slide {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            section {
+                padding: 2.5rem 0;
+            }
+            
+            .comparator-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .comparator-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .lycees-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Orientation Post-Bac</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="mainMenu">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#formations">Formations</a></li>
+                        <li><a href="#comparateur">Comparateur</a></li>
+                        <li><a href="#lycees">Lycées Parisiens</a></li>
+                        <li><a href="#temoignages">Avis</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1>Votre avenir en Informatique & Électronique</h1>
+            <p>Découvrez toutes les formations post-bac disponibles en Bac+2 et Bac+3 pour vous orienter vers les métiers du numérique et de la technologie en région parisienne.</p>
+            <a href="#formations" class="cta-button">Explorer les formations <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section id="formations">
+        <div class="container">
+            <h2 class="section-title">Formations Disponibles</h2>
+            <div class="formations-container">
+                <!-- Formation 1 -->
+                <div class="formation-card">
+                    <div class="formation-header">
+                        <span class="formation-level">Bac+2</span>
+                        <h3 class="formation-title">BTS SIO (Services Informatiques aux Organisations)</h3>
+                        <p class="formation-domain">Informatique</p>
+                    </div>
+                    <div class="formation-body">
+                        <p class="formation-desc">Formation technique qui prépare aux métiers d'administrateur réseau, développeur d'applications ou gestionnaire de bases de données.</p>
+                        <div class="formation-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : 2 ans</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>En lycée ou école</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-euro-sign"></i>
+                                <span>Gratuit en public</span>
+                            </div>
+                        </div>
+                        <a href="#" class="formation-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Formation 2 -->
+                <div class="formation-card">
+                    <div class="formation-header">
+                        <span class="formation-level">Bac+2</span>
+                        <h3 class="formation-title">DUT GEII (Génie Électrique et Informatique Industrielle)</h3>
+                        <p class="formation-domain">Électronique</p>
+                    </div>
+                    <div class="formation-body">
+                        <p class="formation-desc">Formation polyvalente en électronique, automatisme et informatique industrielle pour travailler dans la conception et la maintenance de systèmes.</p>
+                        <div class="formation-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : 2 ans</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>En IUT</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-euro-sign"></i>
+                                <span>Gratuit en public</span>
+                            </div>
+                        </div>
+                        <a href="#" class="formation-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Formation 3 -->
+                <div class="formation-card">
+                    <div class="formation-header">
+                        <span class="formation-level">Bac+3</span>
+                        <h3 class="formation-title">Licence Informatique</h3>
+                        <p class="formation-domain">Informatique</p>
+                    </div>
+                    <div class="formation-body">
+                        <p class="formation-desc">Formation générale en informatique théorique et pratique, permettant de poursuivre en master ou d'intégrer directement le monde professionnel.</p>
+                        <div class="formation-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Durée : 3 ans</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>À l'université</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-euro-sign"></i>
+                                <span>~170€/an</span>
+                            </div>
+                        </div>
+                        <a href="#" class="formation-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparateur Section -->
+    <section class="comparator" id="comparateur">
+        <div class="container">
+            <h2 class="section-title">Comparateur de Formations</h2>
+            <div class="comparator-container">
+                <div class="comparator-options">
+                    <button class="comparator-btn active" data-type="bac2">Bac+2</button>
+                    <button class="comparator-btn" data-type="bac3">Bac+3</button>
+                    <button class="comparator-btn" data-type="info">Informatique</button>
+                    <button class="comparator-btn" data-type="electronique">Électronique</button>
+                </div>
+                
+                <div class="comparator-content active" id="bac2">
+                    <table class="comparator-table">
+                        <thead>
+                            <tr>
+                                <th>Formation</th>
+                                <th>Durée</th>
+                                <th>Lieu</th>
+                                <th>Coût (public)</th>
+                                <th>Débouchés</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="highlight">BTS SIO</td>
+                                <td>2 ans</td>
+                                <td>Lycée / École</td>
+                                <td>Gratuit</td>
+                                <td>Développeur, Admin réseau</td>
+                            </tr>
+                            <tr>
+                                <td class="highlight">DUT GEII</td>
+                                <td>2 ans</td>
+                                <td>IUT</td>
+                                <td>Gratuit</td>
+                                <td>Technicien électronique</td>
+                            </tr>
+                            <tr>
+                                <td class="highlight">BTS SN</td>
+                                <td>2 ans</td>
+                                <td>Lycée / École</td>
+                                <td>Gratuit</td>
+                                <td>Technicien systèmes numériques</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="comparator-content" id="bac3">
+                    <table class="comparator-table">
+                        <thead>
+                            <tr>
+                                <th>Formation</th>
+                                <th>Durée</th>
+                                <th>Lieu</th>
+                                <th>Coût (public)</th>
+                                <th>Débouchés</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="highlight">Licence Informatique</td>
+                                <td>3 ans</td>
+                                <td>Université</td>
+                                <td>~170€/an</td>
+                                <td>Développeur, Analyste</td>
+                            </tr>
+                            <tr>
+                                <td class="highlight">Bachelor Informatique</td>
+                                <td>3 ans</td>
+                                <td>École privée</td>
+                                <td>5 000-8 000€/an</td>
+                                <td>Développeur, Chef de projet</td>
+                            </tr>
+                            <tr>
+                                <td class="highlight">Licence Pro Électronique</td>
+                                <td>1 an</td>
+                                <td>Université / IUT</td>
+                                <td>~170€/an</td>
+                                <td>Ingénieur technico-commercial</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lycées Parisiens Section -->
+    <section id="lycees" class="lycees-section">
+        <div class="container">
+            <h2 class="section-title">Lycées proposant ces formations en Île-de-France</h2>
+            <div class="lycees-container">
+                <!-- Lycée 1 -->
+                <div class="lycee-card">
+                    <div class="lycee-header">
+                        <h3 class="lycee-title">Lycée Louis Armand</h3>
+                        <span class="lycee-type">Public</span>
+                    </div>
+                    <div class="lycee-body">
+                        <div class="lycee-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>11 Rue du Docteur Roux, 75015 Paris</p>
+                                <p>Métro: Porte de Versailles (Ligne 12)</p>
+                            </div>
+                        </div>
+                        <div class="lycee-formations">
+                            <h4>Formations proposées :</h4>
+                            <span class="formation-tag">BTS SIO</span>
+                            <span class="formation-tag">BTS SN</span>
+                        </div>
+                        <a href="#" class="lycee-link">Voir le site web <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Lycée 2 -->
+                <div class="lycee-card">
+                    <div class="lycee-header">
+                        <h3 class="lycee-title">Lycée Dorian</h3>
+                        <span class="lycee-type">Public</span>
+                    </div>
+                    <div class="lycee-body">
+                        <div class="lycee-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>74 Avenue Philippe Auguste, 75011 Paris</p>
+                                <p>Métro: Nation (Lignes 1, 2, 6, 9)</p>
+                            </div>
+                        </div>
+                        <div class="lycee-formations">
+                            <h4>Formations proposées :</h4>
+                            <span class="formation-tag">BTS SIO</span>
+                            <span class="formation-tag">BTS Électronique</span>
+                        </div>
+                        <a href="#" class="lycee-link">Voir le site web <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Lycée 3 -->
+                <div class="lycee-card">
+                    <div class="lycee-header">
+                        <h3 class="lycee-title">Lycée Raspail</h3>
+                        <span class="lycee-type">Public</span>
+                    </div>
+                    <div class="lycee-body">
+                        <div class="lycee-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>15 Rue du Général Guillaumat, 75014 Paris</p>
+                                <p>Métro: Mouton-Duvernet (Ligne 4)</p>
+                            </div>
+                        </div>
+                        <div class="lycee-formations">
+                            <h4>Formations proposées :</h4>
+                            <span class="formation-tag">BTS SIO</span>
+                            <span class="formation-tag">BTS SN IR</span>
+                        </div>
+                        <a href="#" class="lycee-link">Voir le site web <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Lycée 4 -->
+                <div class="lycee-card">
+                    <div class="lycee-header">
+                        <h3 class="lycee-title">Lycée Gustave Eiffel</h3>
+                        <span class="lycee-type">Public</span>
+                    </div>
+                    <div class="lycee-body">
+                        <div class="lycee-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>23 Rue de la Roquette, 75011 Paris</p>
+                                <p>Métro: Bastille (Lignes 1, 5, 8)</p>
+                            </div>
+                        </div>
+                        <div class="lycee-formations">
+                            <h4>Formations proposées :</h4>
+                            <span class="formation-tag">BTS Électrotechnique</span>
+                            <span class="formation-tag">BTS SN</span>
+                        </div>
+                        <a href="#" class="lycee-link">Voir le site web <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Lycée 5 -->
+                <div class="lycee-card">
+                    <div class="lycee-header">
+                        <h3 class="lycee-title">Lycée Léonard de Vinci</h3>
+                        <span class="lycee-type">Public</span>
+                    </div>
+                    <div class="lycee-body">
+                        <div class="lycee-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>6 Rue de la Jonquière, 75017 Paris</p>
+                                <p>Métro: Porte de Clichy (Ligne 13)</p>
+                            </div>
+                        </div>
+                        <div class="lycee-formations">
+                            <h4>Formations proposées :</h4>
+                            <span class="formation-tag">BTS SIO</span>
+                            <span class="formation-tag">BTS Informatique</span>
+                        </div>
+                        <a href="#" class="lycee-link">Voir le site web <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Lycée 6 -->
+                <div class="lycee-card">
+                    <div class="lycee-header">
+                        <h3 class="lycee-title">Lycée Polyvalent d'Arsonval</h3>
+                        <span class="lycee-type">Public</span>
+                    </div>
+                    <div class="lycee-body">
+                        <div class="lycee-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>5 Rue du Docteur Lombard, 94130 Nogent-sur-Marne</p>
+                                <p>RER: Nogent-sur-Marne (Ligne A)</p>
+                            </div>
+                        </div>
+                        <div class="lycee-formations">
+                            <h4>Formations proposées :</h4>
+                            <span class="formation-tag">BTS SN</span>
+                            <span class="formation-tag">BTS Électronique</span>
+                        </div>
+                        <a href="#" class="lycee-link">Voir le site web <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrousel d'avis -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <h2 class="section-title">Avis des Anciens Élèves</h2>
+            
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"Après mon BTS SIO au Lycée Louis Armand, j'ai directement trouvé un emploi de développeur web dans une startup. La formation m'a apporté des compétences très concrètes que j'utilise au quotidien."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Thomas L.</h4>
+                                <p>Développeur web, ancien étudiant BTS SIO</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"Le BTS SN au Lycée Raspail m'a ouvert les portes de l'industrie électronique. J'ai pu poursuivre en licence pro et aujourd'hui je travaille dans la conception de systèmes embarqués pour l'automobile."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophie" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sophie M.</h4>
+                                <p>Ingénieure en systèmes embarqués</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"La formation BTS SIO au Lycée Dorian m'a donné une solide base technique qui me sert tous les jours dans mon travail de développeur full-stack. L'enseignement était très pratique et concret."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Alexandre" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Alexandre R.</h4>
+                                <p>Développeur Full-Stack</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"Le BTS Électronique au Lycée Gustave Eiffel était exigeant mais très formateur. J'ai été embauché dès la fin de mon stage dans une entreprise de domotique. Je recommande cette formation!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Marie" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Marie D.</h4>
+                                <p>Technicienne en domotique</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"Grâce au BTS SN option Informatique et Réseaux au Lycée Léonard de Vinci, j'ai pu intégrer une grande entreprise de télécommunications. Les professeurs étaient compétents et disponibles."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Kevin" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Kevin T.</h4>
+                                <p>Administrateur réseau</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistiques Section -->
+    <section id="statistiques">
+        <div class="container">
+            <h2 class="section-title">Chiffres Clés</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-number">94%</div>
+                    <div class="stat-text">Taux d'insertion professionnelle à 6 mois pour les BTS informatique</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-number">+15%</div>
+                    <div class="stat-text">Croissance des emplois dans le numérique d'ici 2025</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <div class="stat-number">32k€</div>
+                    <div class="stat-text">Salaire moyen annuel brut après un Bac+3 en informatique</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">85%</div>
+                    <div class="stat-text">Étudiants satisfaits de leur formation en électronique</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Questions Fréquentes</h2>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h3>Quelle est la différence entre un BTS et un DUT ?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le BTS (Brevet de Technicien Supérieur) se prépare en lycée ou école privée, est très professionnalisant avec des stages en entreprise. Le DUT (Diplôme Universitaire de Technologie) se prépare en IUT (Institut Universitaire de Technologie), est plus théorique et permet une meilleure poursuite d'études. Les deux diplômes se valent sur le marché du travail.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Puis-je poursuivre mes études après un BTS ou DUT ?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Après un BTS ou DUT, vous pouvez poursuivre en licence professionnelle (1 an), en école d'ingénieur (après une prépa ATS ou sur concours), ou en licence générale (L3) à l'université. Beaucoup d'étudiants choisissent de continuer leurs études pour se spécialiser.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quels sont les débouchés en informatique après un Bac+2/Bac+3 ?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les débouchés sont nombreux : développeur web/mobile, administrateur réseau, administrateur de bases de données, technicien support, chef de projet junior, analyste programmeur, etc. Le secteur du numérique recrute activement à tous les niveaux de qualification.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment s'inscrire dans ces formations en région parisienne ?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pour les formations publiques (BTS, DUT), l'inscription se fait via Parcoursup. Pour les écoles privées, il faut généralement candidater directement auprès de l'établissement. Les journées portes ouvertes sont l'occasion de découvrir les formations et de rencontrer les enseignants.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Orientation</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>123 Rue de l'Innovation<br>75000 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>01 23 45 67 89</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@orientation-postbac.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Horaires</h3>
+                            <p>Lun-Ven : 9h-18h<br>Samedi : 10h-16h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="" disabled selected>Sélectionnez un sujet</option>
+                                <option value="orientation">Demande d'orientation</option>
+                                <option value="formation">Renseignement sur une formation</option>
+                                <option value="inscription">Inscription à une journée portes ouvertes</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Envoyer le message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Orientation Post-Bac</span>
+                    </div>
+                    <p>Plateforme d'orientation pour les formations post-bac en informatique et électronique en région parisienne. Nous vous accompagnons dans votre choix d'études supérieures.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#formations">Formations</a></li>
+                        <li><a href="#lycees">Lycées Parisiens</a></li>
+                        <li><a href="#temoignages">Avis</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Orientation Post-Bac. Tous droits réservés. | <a href="#" style="color: #bbb;">Mentions légales</a> | <a href="#" style="color: #bbb;">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Comparateur
+        const comparatorBtns = document.querySelectorAll('.comparator-btn');
+        const comparatorContents = document.querySelectorAll('.comparator-content');
+        
+        comparatorBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                comparatorBtns.forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                btn.classList.add('active');
+                
+                // Cacher tous les contenus
+                comparatorContents.forEach(content => content.classList.remove('active'));
+                
+                // Afficher le contenu correspondant
+                const type = btn.getAttribute('data-type');
+                document.getElementById(type).classList.add('active');
+            });
+        });
+        
+        // Swiper Carousel
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            speed: 800,
+            
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is >= 768px
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+                // when window width is >= 1024px
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+            }
+        });
+        
+        // FAQ accordéon
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Fermer tous les autres items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Ouvrir/fermer l'item cliqué
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Formulaire de contact
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Récupération des valeurs
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Ici, normalement, on enverrait les données à un serveur
+            // Pour cet exemple, on simule juste l'envoi
+            
+            // Affichage d'un message de confirmation
+            alert(`Merci ${name} ! Votre message a été envoyé. Nous vous répondrons à ${email} dans les plus brefs délais.`);
+            
+            // Réinitialisation du formulaire
+            contactForm.reset();
+        });
+        
+        // Navigation fluide
+        document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Fermer le menu mobile si ouvert
+                    if(mainMenu.classList.contains('active')) {
+                        mainMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Initialisation de la FAQ (premier item ouvert)
+        document.querySelector('.faq-item').classList.add('active');
+    </script>
+</body>
+</html>
